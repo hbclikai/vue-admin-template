@@ -31,10 +31,33 @@ export const constantRouterMap = [
     redirect: '/dashboard',
     name: 'Dashboard',
     hidden: true,
+    meta: { title: '总控制台', icon: 'example' },
     children: [{
       path: 'dashboard',
       component: () => import('@/views/dashboard/index')
     }]
+  },
+
+  {
+    path: '/project',
+    component: Layout,
+    redirect: '/project/datamodel',
+    name: 'Project',
+    meta: { title: '工程管理', icon: 'example' },
+    children: [
+      {
+        path: 'group',
+        name: 'Group',
+        component: () => import('@/views/project/group'),
+        meta: { title: '项目管理', icon: 'tree' }
+      },
+      {
+        path: 'datamodel',
+        name: 'DataModel',
+        component: () => import('@/views/project/datamodel'),
+        meta: { title: '数据模板', icon: 'table' }
+      }
+    ]
   },
 
   {
